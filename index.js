@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import RootNavigator from './RootNavigator';
 
-AppRegistry.registerComponent('UnicornReact', () => App);
+AppRegistry.registerComponent('UnicornReact', () => RootNavigator);

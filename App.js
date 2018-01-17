@@ -28,7 +28,7 @@ export default class App extends Component {
         const resetAction = NavigationActions.reset({
             index: 0,
             actions: [
-                NavigationActions.navigate({routeName: 'Login'})
+                NavigationActions.navigate({routeName: 'Setting'})
             ]
         });
         this.props.navigation.dispatch(resetAction);

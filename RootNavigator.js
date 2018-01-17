@@ -3,6 +3,8 @@ import { StackNavigator } from 'react-navigation';
 import MainScreen from './app/screens/MainScreen';
 import LoginScreen from './app/screens/Login/LoginScreen';
 import SettingScreen from './app/screens/Settings/SettingScreen';
+import DrawerScreen from './app/screens/DrawerScreen';
+>>>>>>> navigator implement - in progress
 
 export default RootNavigator = StackNavigator({
     App: {
@@ -27,6 +29,11 @@ export default RootNavigator = StackNavigator({
         screen: SettingScreen,
         navigationOptions: {
             title: 'Setting'
+},
+    Drawer: {
+        screen: DrawerScreen,
+        navigationOptions: {
+            title: 'Drawer'
         }
     }
 });

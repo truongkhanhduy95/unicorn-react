@@ -1,41 +1,39 @@
 import App from './App';
-import {
-    StackNavigator
-} from 'react-navigation';
-import MainScreen from './app/screens/MainScreen';
-import LoginScreen from './app/screens/Login/LoginScreen';
-import SettingScreen from './app/screens/Settings/SettingScreen';
-import DrawerScreen from './app/screens/DrawerScreen';
+import { StackNavigator } from 'react-navigation';
+import MainScreen from './src/screens/MainScreen';
+import LoginScreen from './src/screens/Login/LoginScreen';
+import SettingScreen from './src/screens/Settings/SettingScreen';
+import DrawerScreen from './src/screens/DrawerScreen';
 
-export default RootNavigator = StackNavigator({
-    App: {
-        screen: App,
-        navigationOptions: {
-            title: 'App'
-        }
+export default (RootNavigator = StackNavigator({
+  App: {
+    screen: App,
+    navigationOptions: {
+      title: 'App',
     },
-    Main: {
-        screen: MainScreen,
-        navigationOptions: {
-            title: 'Main'
-        }
+  },
+  Main: {
+    screen: MainScreen,
+    navigationOptions: {
+      title: 'Main',
     },
-    Login: {
-        screen: LoginScreen,
-        navigationOptions: {
-            title: 'Login'
-        }
+  },
+  Login: {
+    screen: LoginScreen,
+    navigationOptions: {
+      title: 'Login',
     },
-    Setting: {
-        screen: SettingScreen,
-        navigationOptions: {
-            title: 'Setting'
-        }
+  },
+  Setting: {
+    screen: SettingScreen,
+    navigationOptions: {
+      title: 'Setting',
     },
-    Drawer: {
-        screen: DrawerScreen,
-        navigationOptions: {
-            title: 'Drawer'
-        }
-    }
-});
+  },
+  Drawer: {
+    screen: DrawerScreen,
+    navigationOptions: {
+      title: 'Drawer',
+    },
+  },
+}));

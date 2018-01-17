@@ -6,7 +6,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button} from 'react-native';
-
+import { NavigationActions } from 'react-navigation'
 import SplashScreen from "react-native-smart-splash-screen";
 
 const instructions = Platform.select({
@@ -15,13 +15,23 @@ const instructions = Platform.select({
             'enu'
 });
 
-export default class App extends Component < {} > {
+export default class App extends Component {
 
     componentDidMount() {
         //SplashScreen.close(SplashScreen.animationType.scale, 850, 500)
         SplashScreen.close(
             {animationType: SplashScreen.animationType.scale, duration: 850, delay: 500}
         )
+    }
+
+    onButtonPress() {
+        const resetAction = NavigationActions.reset({
+            index: 0,
+            actions: [
+                NavigationActions.navigate({routeName: 'Login'})
+            ]
+        });
+        this.props.navigation.dispatch(resetAction);
     }
 
     render() {
@@ -37,7 +47,7 @@ export default class App extends Component < {} > {
                     {instructions}
                 </Text>
                 <Button
-                    onPress={() => this.props.navigation.navigate('Main')}
+                    onPress={this.onButtonPress.bind(this)}
                     title="Learn More"
                     color="#841584"
                     accessibilityLabel="Learn more about this purple button"/>

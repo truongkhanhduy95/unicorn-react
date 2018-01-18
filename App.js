@@ -27,7 +27,7 @@ export default class App extends Component {
   onButtonPress() {
     const resetAction = NavigationActions.reset({
       index: 0,
-      actions: [NavigationActions.navigate({ routeName: 'Setting' })],
+      actions: [NavigationActions.navigate({ routeName: 'Drawer' })],
     });
     this.props.navigation.dispatch(resetAction);
   }

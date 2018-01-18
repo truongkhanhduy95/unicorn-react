@@ -4,6 +4,9 @@ import { DrawerNavigator } from 'react-navigation';
 import HomeScreen from './HomeScreen';
 import DummyScreen from './DummyScreen';
 import tabStyles from './styles';
+import MainScreen from './MainScreen';
+import MenuScreen from './Menu/MenuScreen';
+import { DrawerItems, SafeAreaView } from 'react-navigation';
 
 class MyHomeScreen extends Component {
   static navigationOptions = {
@@ -47,13 +50,30 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
+  container: {
+    flex: 1,
+  },
 });
 
-export default (DrawerScreen = DrawerNavigator({
-  Home: {
-    screen: MyHomeScreen,
+export default (DrawerScreen = DrawerNavigator(
+  {
+    Home: {
+      screen: MainScreen,
+    },
+    Notifications: {
+      screen: MyNotificationsScreen,
+    },
   },
-  Notifications: {
-    screen: MyNotificationsScreen,
+  {
+    contentComponent: MenuScreen,
   },
-}));
+));
+
+// const CustomDrawerContentComponent = props => (
+//   <ScrollView>
+//     <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: 'never' }}>
+//       {/* <DrawerItems {...props} /> */}
+//       <MenuScreen />
+//     </SafeAreaView>
+//   </ScrollView>
+// );

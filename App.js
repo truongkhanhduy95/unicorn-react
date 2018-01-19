@@ -8,11 +8,26 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import SplashScreen from 'react-native-smart-splash-screen';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+const myIcon = <Icon name="rocket" size={30} color="#900" />;
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\nCmd+D or shake for dev menu',
   android: 'Double tap R on your keyboard to reload,\nShake or press menu button for dev m' + 'enu',
 });
+
+const myButton = (
+  <Icon.Button name="facebook" backgroundColor="#3b5998" onPress={this.loginWithFacebook}>
+    Login with Facebook
+  </Icon.Button>
+);
+
+const customTextButton = (
+  <Icon.Button name="facebook" backgroundColor="#3b5998">
+    <Text style={{ fontFamily: 'Arial', fontSize: 15 }}>Login with Facebook</Text>
+  </Icon.Button>
+);
 
 export default class App extends Component {
   componentDidMount() {
@@ -44,6 +59,8 @@ export default class App extends Component {
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
         />
+        {myButton}
+        {myIcon}
       </View>
     );
   }

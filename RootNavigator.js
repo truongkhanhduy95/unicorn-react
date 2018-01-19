@@ -35,7 +35,7 @@ export default (RootNavigator = StackNavigator(
     Drawer: {
       screen: DrawerScreen,
       navigationOptions: {
-        title: 'Drawer',
+        title: 'Unicorn',
       },
     },
   },

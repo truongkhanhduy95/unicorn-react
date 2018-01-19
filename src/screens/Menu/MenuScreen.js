@@ -32,16 +32,22 @@ export default class MenuScreen extends Component {
     );
   }
 
+  onAvatarPress() {
+    this.props.navigation.navigate('Setting');
+  }
+
   render() {
     return (
       <View>
         <View style={styles.profile}>
-          <Image
-            source={{
-              uri: this.state.profile.avatarUrl,
-            }}
-            style={styles.avatar}
-          />
+          <TouchableOpacity onPress={this.onAvatarPress.bind(this)}>
+            <Image
+              source={{
+                uri: this.state.profile.avatarUrl,
+              }}
+              style={styles.avatar}
+            />
+          </TouchableOpacity>
           <Text style={styles.name}>{this.state.profile.name}</Text>
           <Text>{this.state.profile.position}</Text>
         </View>

@@ -9,6 +9,7 @@ import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import SplashScreen from 'react-native-smart-splash-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import GetStartedScreen from './src/screens/GetStartedScreen';
 
 const myIcon = <Icon name="rocket" size={30} color="#900" />;
 
@@ -30,6 +31,11 @@ const customTextButton = (
 );
 
 export default class App extends Component {
+  static navigationOptions = {
+    header: null,
+    title: '',
+  };
+
   componentDidMount() {
     // SplashScreen.close(SplashScreen.animationType.scale, 850, 500)
     SplashScreen.close({
@@ -49,19 +55,20 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-        <Button
-          onPress={this.onButtonPress.bind(this)}
-          title="Learn More"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-        {myButton}
-        {myIcon}
-      </View>
+      <GetStartedScreen navigation={this.props.navigation} />
+      // <View style={styles.container}>
+      //   <Text style={styles.welcome}>Welcome to React Native!</Text>
+      //   <Text style={styles.instructions}>To get started, edit App.js</Text>
+      //   <Text style={styles.instructions}>{instructions}</Text>
+      //   <Button
+      //     onPress={this.onButtonPress.bind(this)}
+      //     title="Learn More"
+      //     color="#841584"
+      //     accessibilityLabel="Learn more about this purple button"
+      //   />
+      //   {myButton}
+      //   {myIcon}
+      // </View>
     );
   }
 }

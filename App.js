@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import SplashScreen from 'react-native-smart-splash-screen';
+import Realm from 'realm';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\nCmd+D or shake for dev menu',
@@ -15,6 +16,26 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { realm: null };
+  }
+
+  componentWillMount() {
+    Realm.open({
+      schema: [{ name: 'Dog', properties: { name: 'string' } }],
+    }).then((realm) => {
+      realm.write(() => {
+        realm.deleteAll();
+      });
+      realm.write(() => {
+        realm.create('Dog', { name: 'Rex' });
+        realm.create('Dog', { name: 'Max' });
+      });
+      this.setState({ realm });
+    });
+  }
+
   componentDidMount() {
     // SplashScreen.close(SplashScreen.animationType.scale, 850, 500)
     SplashScreen.close({
@@ -33,6 +54,9 @@ export default class App extends Component {
   }
 
   render() {
+    const info = this.state.realm
+      ? `Number of dogs in this Realm: ${this.state.realm.objects('Dog').length}`
+      : 'Loading...';
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to React Native!</Text>
@@ -44,6 +68,7 @@ export default class App extends Component {
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
         />
+        <Text>{info}</Text>
       </View>
     );
   }

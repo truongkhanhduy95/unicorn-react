@@ -21,3 +21,21 @@
 //     });
 //   };
 // }
+
+import { UPDATE_VIDEOS, SELECT_VIDEO } from '../constants/Constants';
+
+export function updateVideos(videos) {
+  console.log(`>>> videos: ${videos}`);
+  return {
+    type: UPDATE_VIDEOS,
+    payload: videos,
+  };
+}
+
+export function selectVideo(video) {
+  console.log(`selected video: ${video}`);
+  return {
+    type: SELECT_VIDEO,
+    payload: video,
+  };
+}

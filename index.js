@@ -1,5 +1,15 @@
+import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
-// import RootNavigator from './RootNavigator';
 import App from './app/native/containers/App';
+import configureStore from './app/store/configureStore';
+import { Provider } from 'react-redux';
 
-AppRegistry.registerComponent('UnicornReact', () => App);
+const store = configureStore();
+
+const Root = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+
+AppRegistry.registerComponent('UnicornReact', () => Root);

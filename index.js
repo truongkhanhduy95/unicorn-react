@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
-import { AppRegistry } from 'react-native';
-import App from './app/native/containers/App';
-import configureStore from './app/store/configureStore';
+import { AppRegistry, View } from 'react-native';
 import { Provider } from 'react-redux';
+
+import App from './app/native/App';
+import configureStore from './app/store/configureStore';
+import getEnhancedVideoPanel from './app/containers/VideoPanelContainer';
 
 const store = configureStore();
 
-const Root = () => (
-  <Provider store={store}>
-    <App />
-  </Provider>
-);
+const Root = () => {
+  const EnhancedVideoPanel = getEnhancedVideoPanel(App);
+  return (
+    <Provider store={store}>
+      <EnhancedVideoPanel />
+    </Provider>
+  );
+};
 
 AppRegistry.registerComponent('UnicornReact', () => Root);

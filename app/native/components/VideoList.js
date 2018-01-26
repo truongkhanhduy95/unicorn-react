@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
-import VideoItemContainer from '../containers/VideoItemContainer';
+
+import VideoItem from './VideoItem/VideoItem';
+import getEnhancedVideoListItem from '../../containers/VideoListItemContainer';
 
 export default class VideoList extends Component {
-  renderItem(item) {
-    return <VideoItemContainer value={item} />;
-  }
-
   render() {
+    const EnhancedVideoListItem = getEnhancedVideoListItem(VideoItem);
     return (
       <FlatList
         data={this.props.videos}
-        renderItem={({ item }) => this.renderItem(item)}
+        renderItem={({ item }) => <EnhancedVideoListItem value={item} />}
         keyExtractor={(item, index) => index}
       />
     );

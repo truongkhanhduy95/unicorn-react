@@ -4,8 +4,8 @@ import { Text, View } from 'react-native';
 export default class ActiveVideo extends Component {
   render() {
     let title = '';
-    if (this.props.activeVideo) {
-      title = this.props.activeVideo.snippet.title;
+    if (this.props.video) {
+      title = this.props.video.snippet.title;
     }
     return (
       <View>

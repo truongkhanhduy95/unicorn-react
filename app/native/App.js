@@ -17,6 +17,7 @@ import VideoList from './components/VideoList';
 import ActiveVideo from './components/ActiveVideo/ActiveVideo';
 import getEnhancedVideoList from '../containers/VideoListContainer';
 import getEnhancedActiveVideo from '../containers/VideoDetailContainer';
+import { appStyle } from './styles/styles';
 
 export default class App extends Component {
   componentDidMount() {
@@ -31,7 +32,7 @@ export default class App extends Component {
     const EnhancedVideoList = getEnhancedVideoList(VideoList);
     const EnhancedActiveVideo = getEnhancedActiveVideo(ActiveVideo);
     return (
-      <View>
+      <View style={appStyle.reactNativeWeb}>
         <EnhancedActiveVideo />
         <EnhancedVideoList />
       </View>

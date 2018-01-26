@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 const VideoDetail = ({ video }) => {
   if (!video) {
@@ -22,10 +21,4 @@ const VideoDetail = ({ video }) => {
   );
 };
 
-function mapStateToProps(state) {
-  return {
-    video: state.activeVideo,
-  };
-}
-
-export default connect(mapStateToProps)(VideoDetail);
+export default VideoDetail;

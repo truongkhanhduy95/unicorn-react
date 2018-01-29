@@ -24,6 +24,7 @@
     "react-navigation": "^1.0.0-beta.26",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
+    "redux-saga": "^0.16.0",
     "redux-thunk": "^2.2.0",
     "rn-viewpager": "^1.2.9",
     "superagent": "^3.8.2",

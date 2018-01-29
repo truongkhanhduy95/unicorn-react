@@ -1,11 +1,11 @@
 import { UPDATE_VIDEOS } from '../constants/Constants';
 
-export default function (state = null, action) {
-  console.log(`videos reducer state >>> ${state} >>> ${action}`);
+export default function (state = [], action) {
+  console.log(`videos reducer state >>> ${state} >>> ${action.type}`);
   switch (action.type) {
     case UPDATE_VIDEOS:
       return action.payload;
+    default:
+      return state;
   }
-  // return [{ etag: 'Javascript' }, { etag: 'React Native' }, { etag: 'Reactjs' }];
-  return state;
 }

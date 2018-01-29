@@ -1,16 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+// import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 import { createLogger } from 'redux-logger';
-// import DevTools from '../web/containers/DevTools';
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from '../saga/sagas';
 
-// create a store that has redux-thunk middleware, and dev tooling enabled.
-// the logger middleware logs the previous state, the action, and the next
-// state in the browser's console for easy debuggin' and instrementing the
-// dev tools allows for us to commit different actions and go forwards and
-// backwards in time using magic
+const sagaMiddleware = createSagaMiddleware();
 const createDevStoreWithMiddleware = compose(
-  applyMiddleware(thunk),
+  applyMiddleware(sagaMiddleware),
   applyMiddleware(createLogger()),
   // DevTools.instrument(),
 )(createStore);
@@ -25,6 +22,8 @@ export default function configureStore() {
       store.replaceReducer(nextRootReducer);
     });
   }
+
+  sagaMiddleware.run(rootSaga);
 
   return store;
 }

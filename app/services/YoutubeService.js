@@ -28,4 +28,9 @@ export default class YoutubeService {
       },
     );
   }
+
+  fetchVideos(term) {
+    const url = `https://www.googleapis.com/youtube/v3/search?type=video&key=${API_KEY}&part=snippet&q=${term}`;
+    return axios.get(url);
+  }
 }

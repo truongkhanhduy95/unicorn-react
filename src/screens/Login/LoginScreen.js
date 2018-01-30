@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button, Image } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import styles from './styles';
 
 export default class LoginScreen extends Component {
+  static navigationOptions = {
+    header: null,
+  };
+
   onLoginButtonPress() {
     const resetAction = NavigationActions.reset({
       index: 0,
@@ -15,17 +19,10 @@ export default class LoginScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.contentContainer}>
-          <Text>Username</Text>
-          <TextInput />
-          <Text>Password</Text>
-          <TextInput secureTextEntry />
-          <Button
-            style={styles.loginButton}
-            title="Login"
-            onPress={this.onLoginButtonPress.bind(this)}
-          />
-        </View>
+        <Image
+          style={styles.coverPhoto}
+          source={require('../../../public/images/img_login_bg.png')}
+        />
       </View>
     );
   }

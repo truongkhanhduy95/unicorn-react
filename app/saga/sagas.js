@@ -1,8 +1,10 @@
-import { call, put, takeEvery, all } from 'redux-saga/effects';
-import TestService from '../services/YoutubeService';
-import { UPDATE_VIDEOS, FETCH_VIDEOS_FAILED, FETCH_VIDEOS } from '../constants/Constants';
 import { type } from 'os';
 import { delay } from 'redux-saga';
+import { call, put, takeEvery, all } from 'redux-saga/effects';
+
+import TestService from '../services/YoutubeService';
+import { UPDATE_VIDEOS, FETCH_VIDEOS_FAILED, FETCH_VIDEOS } from '../constants/Constants';
+import loginAsync from './LoginSaga';
 
 export function* fetchVideos(action) {
   try {
@@ -22,7 +24,7 @@ function* fetchVideosAsync() {
 }
 
 function* rootSaga() {
-  yield all([fetchVideosAsync()]);
+  yield all([fetchVideosAsync(), loginAsync()]);
 }
 
 export default rootSaga;

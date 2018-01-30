@@ -1,4 +1,4 @@
-import { UPDATE_VIDEOS, SELECT_VIDEO, FETCH_VIDEOS } from '../constants/Constants';
+import { UPDATE_VIDEOS, SELECT_VIDEO, FETCH_VIDEOS, LOGIN } from '../constants/Constants';
 
 export function fetchVideos(term) {
   return {
@@ -20,5 +20,15 @@ export function selectVideo(video) {
   return {
     type: SELECT_VIDEO,
     payload: video,
+  };
+}
+
+export function login(username, password) {
+  return {
+    type: LOGIN,
+    payload: {
+      username,
+      password,
+    },
   };
 }

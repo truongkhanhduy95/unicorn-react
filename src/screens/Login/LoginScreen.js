@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { NavigationActions } from 'react-navigation';
+import { TextField } from 'react-native-material-textfield';
+import { Button } from 'native-base';
+import CheckBox from 'react-native-check-box';
+import SplashScreen from 'react-native-smart-splash-screen';
+
+import styles from './styles';
+import globalStyles from '../styles';
+import * as colors from '../../../public/colors';
 
 export default class LoginScreen extends Component {
   static navigationOptions = {
@@ -11,9 +19,17 @@ export default class LoginScreen extends Component {
     super(props);
 
     this.state = {
-      username: '',
-      password: '',
+      username: 'thuan.nguyen@unicorn.vn',
+      password: '123456789',
     };
+  }
+
+  componentDidMount() {
+    SplashScreen.close({
+      animationType: SplashScreen.animationType.scale,
+      duration: 850,
+      delay: 500,
+    });
   }
 
   onLoginButtonPress() {
@@ -24,97 +40,63 @@ export default class LoginScreen extends Component {
     this.props.navigation.dispatch(resetAction);
   }
 
+  onPress() {
+    this.props.onLoginButtonPress(this.state.username, this.state.password);
+  }
+
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'column',
-        }}
-      >
+      <View style={styles.container}>
         <Image
           style={styles.coverPhoto}
           source={require('../../../public/images/img_login_bg.png')}
         />
-        <View
-          style={{
-            // width: 200,
-            // height: 200,
-            backgroundColor: 'transparent',
-            opacity: 1,
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-            flex: 1,
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            // alignContent: 'center',
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 30,
-              fontWeight: 'bold',
-              bottom: 42,
-            }}
-          >
-            Buy. Sell. Earn
-          </Text>
-          <Text
-            style={{
-              fontSize: 20,
-              bottom: 30,
-            }}
-          >
-            Wecome back!!!
-          </Text>
-          <View
-            style={{
-              backgroundColor: 'white',
-              flex: 0.5,
-              marginHorizontal: 20,
-              alignSelf: 'stretch',
-              borderRadius: 6,
-              padding: 24,
-            }}
-          >
-            {/* <Text style={styles.labelStyle}>Username</Text>
-            <TextInput
-              style={styles.textboxStyle}
-              onChangeText={text => this.setState({ username: text })}
+        <View style={styles.contentContainer}>
+          <View style={styles.textContainer}>
+            <Text style={styles.title}>Buy. Sell. Earn</Text>
+            <Text style={styles.subtitle}>Wecome back!!!</Text>
+          </View>
+          <View style={styles.inputForm}>
+            <TextField
+              label="Username"
               value={this.state.username}
-              placeholder="Enter username"
+              onChangeText={phone => console.log(phone)}
+              tintColor={colors.TINT}
+              onChangeText={phone => this.setState({ username: phone.toString() })}
             />
-            <Text style={[styles.labelStyle, { top: 12 }]}>Password</Text>
-            <TextInput
-              style={[styles.textboxStyle, { top: 24 }]}
-              onChangeText={text => this.setState({ password: text })}
+            <TextField
+              label="Password"
               value={this.state.password}
-              placeholder="Password"
+              onChangeText={phone => console.log(phone)}
+              tintColor={colors.TINT}
               secureTextEntry
+              onChangeText={phone => this.setState({ password: phone.toString() })}
             />
+            <View style={styles.subContainer}>
+              <CheckBox
+                style={{ flex: 1 }}
+                onClick={() => console.log('123')}
+                isChecked={false}
+                rightText="Keep me logged in"
+                checkBoxColor={colors.TINT}
+              />
+              <TouchableOpacity>
+                <Text>Forgot password</Text>
+              </TouchableOpacity>
+            </View>
             <Button
-              title="Login"
-              color="#841584"
-              accessibilityLabel="Learn more about this purple button"
-            /> */}
+              style={[styles.loginButton, globalStyles.filledButton]}
+              rounded
+              onPress={this.onPress.bind(this)}
+            >
+              <Text style={globalStyles.filledButtonText}>{'Login'.toUpperCase()}</Text>
+            </Button>
+          </View>
+          <View style={styles.logoContainer}>
+            <Image style={styles.logo} source={require('../../../public/images/logo_gcm.png')} />
           </View>
         </View>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  labelStyle: {
-    bottom: 8,
-  },
-  textboxStyle: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-  },
-});

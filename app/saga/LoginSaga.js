@@ -9,6 +9,7 @@ function* executeLogin(action) {
     const response = yield login(action.payload);
     console.log(response.data);
     yield put({ type: LOGIN_SUCCESS, data: response.data });
+    action.payload.callback();
   } catch (error) {
     yield put({ type: LOGIN_FAILED, message: error.message, done: false });
   }

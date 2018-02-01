@@ -9,10 +9,10 @@ export default function login({ username, password }) {
     headers: {
       'Content-Type': 'application/json',
     },
-    data: {
+    data: JSON.stringify({
       username,
       password,
       grantType: 'password',
-    },
+    }),
   });
 }

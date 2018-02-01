@@ -10,7 +10,12 @@ const loginContainer = WrappedComponent =>
       return (
         <WrappedComponent
           {...this.props}
-          onLoginButtonPress={({ username, password }) => this.props.login(username, password)}
+          onLoginButtonPress={(username, password) =>
+            this.props.login(username, password, () => {
+              console.log('>>>>>>>>>>>>>>>>>>>>> login success');
+              this.props.navigation.navigate('Main');
+            })
+          }
         />
       );
     }

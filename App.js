@@ -10,6 +10,8 @@ import { NavigationActions } from 'react-navigation';
 import SplashScreen from 'react-native-smart-splash-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import GetStartedScreen from './src/screens/GetStartedScreen';
+import LoginScreen from './src/screens/Login/LoginScreen';
+import getLoginScreenWrapper from './app/containers/LoginContainer';
 
 const myIcon = <Icon name="rocket" size={30} color="#900" />;
 
@@ -37,7 +39,6 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    // SplashScreen.close(SplashScreen.animationType.scale, 850, 500)
     SplashScreen.close({
       animationType: SplashScreen.animationType.scale,
       duration: 850,
@@ -54,8 +55,10 @@ export default class App extends Component {
   }
 
   render() {
+    const LoginScreenWrapper = getLoginScreenWrapper(LoginScreen);
     return (
-      <GetStartedScreen navigation={this.props.navigation} />
+      // <GetStartedScreen navigation={this.props.navigation} />
+      <LoginScreenWrapper />
       // <View style={styles.container}>
       //   <Text style={styles.welcome}>Welcome to React Native!</Text>
       //   <Text style={styles.instructions}>To get started, edit App.js</Text>

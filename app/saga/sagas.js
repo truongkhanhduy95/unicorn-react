@@ -1,4 +1,3 @@
-import { type } from 'os';
 import { delay } from 'redux-saga';
 import { call, put, takeEvery, all } from 'redux-saga/effects';
 
@@ -14,6 +13,7 @@ export function* fetchVideos(action) {
     const response = yield service.fetchVideos(action.payload);
     console.log(`data >>> ${response}`);
     yield put({ type: UPDATE_VIDEOS, payload: response.data.items });
+    action.payload.callback();
   } catch (error) {
     yield put({ type: FETCH_VIDEOS_FAILED, message: error.message });
   }

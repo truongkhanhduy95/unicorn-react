@@ -23,12 +23,13 @@ export function selectVideo(video) {
   };
 }
 
-export function login(username, password) {
+export function login(username, password, callback) {
   return {
     type: LOGIN,
     payload: {
       username,
       password,
+      callback,
     },
   };
 }

@@ -5,6 +5,9 @@ import LoginScreen from './src/screens/Login/LoginScreen';
 import SettingScreen from './src/screens/Settings/SettingScreen';
 import DrawerScreen from './src/screens/DrawerScreen';
 import GetStartedScreen from './src/screens/GetStartedScreen';
+import LoginContainer from './app/containers/LoginContainer';
+
+const EnhancedLoginScreen = LoginContainer(LoginScreen);
 
 export default (RootNavigator = StackNavigator(
   {
@@ -21,7 +24,7 @@ export default (RootNavigator = StackNavigator(
       },
     },
     Login: {
-      screen: LoginScreen,
+      screen: EnhancedLoginScreen,
       navigationOptions: {
         title: 'Login',
       },
@@ -40,6 +43,6 @@ export default (RootNavigator = StackNavigator(
     },
   },
   {
-    initialRouteName: 'App',
+    initialRouteName: 'Login',
   },
 ));

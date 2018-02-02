@@ -5,3 +5,4 @@ export const FETCH_VIDEOS_FAILED = 'FETCH_VIDEOS_FAILED';
 export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
+export const FETCHING_DATA = 'FETCHING_DATA';

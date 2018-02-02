@@ -1,7 +1,7 @@
 import App from './App';
 import { StackNavigator } from 'react-navigation';
 import MainScreen from './src/screens/MainScreen';
-import LoginScreen from './src/screens/Login/LoginScreen';
+import LoginScreen from './app/native/components/Login/LoginScreen';
 import SettingScreen from './src/screens/Settings/SettingScreen';
 import DrawerScreen from './src/screens/DrawerScreen';
 import GetStartedScreen from './src/screens/GetStartedScreen';

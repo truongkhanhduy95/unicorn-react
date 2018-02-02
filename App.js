@@ -10,7 +10,7 @@ import { NavigationActions } from 'react-navigation';
 import SplashScreen from 'react-native-smart-splash-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import GetStartedScreen from './src/screens/GetStartedScreen';
-import LoginScreen from './src/screens/Login/LoginScreen';
+import LoginScreen from './app/native/components/Login/LoginScreen';
 import getLoginScreenWrapper from './app/containers/LoginContainer';
 
 const myIcon = <Icon name="rocket" size={30} color="#900" />;

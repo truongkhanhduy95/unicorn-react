@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import VideosReducer from './reducer_videos';
 import ActiveVideoReducer from './reducer_active_video';
+import FetchDataReducer from './reducer_fetch_data';
 
 const rootReducer = combineReducers({
   videos: VideosReducer,
   activeVideo: ActiveVideoReducer,
+  isBusy: FetchDataReducer,
 });
 
 export default rootReducer;

@@ -1,10 +1,18 @@
 import { StyleSheet } from 'react-native';
+import { TINT } from '../../../public/colors';
 
-export const appStyle = StyleSheet.create({
+export default StyleSheet.create({
   reactNativeWeb: {
     flexDirection: 'column',
     flex: 1,
     justifyContent: 'center',
     marginTop: 20,
+  },
+  filledButton: {
+    backgroundColor: TINT,
+  },
+  filledButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });

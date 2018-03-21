@@ -10,6 +10,7 @@ import styles from './styles';
 import globalStyles from '../../styles/styles';
 import * as colors from '../../../public/colors';
 import Spinner from 'react-native-loading-spinner-overlay';
+import NativeTextView from '../NativeTextView';
 
 export default class LoginScreen extends Component {
   static navigationOptions = {
@@ -54,6 +55,7 @@ export default class LoginScreen extends Component {
         />
         <View style={styles.contentContainer}>
           <View style={styles.textContainer}>
+            <NativeTextView text="Hello world" />
             <Text style={styles.title}>Buy. Sell. Earn</Text>
             <Text style={styles.subtitle}>Wecome back!!!</Text>
           </View>

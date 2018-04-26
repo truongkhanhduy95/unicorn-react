@@ -48,13 +48,21 @@ export default class LoginScreen extends Component {
   }
 
   onTouch(){
-    this.setState(oldState =>
-    {
-       return {
-        username: 'clicked ' + ++oldState.clickCount,
-        clickCount : oldState.clickCount++,
-      };
-    })
+    this.setState((oldstate)=>(
+      {
+          clickCount: oldstate.clickCount + 1
+      }
+    ));
+    this.setState((oldstate)=>(
+      {
+        clickCount: oldstate.clickCount + 1
+      }
+    ));
+    this.setState((oldstate)=>(
+      {
+        clickCount: oldstate.clickCount + 1
+      }
+    ));
   }
 
   onKeep(){
@@ -82,7 +90,7 @@ export default class LoginScreen extends Component {
             <View style={styles.inputForm}>
               <TextField
                 label="Username"
-                value={this.state.username}
+                value={this.state.clickCount.toString()}
                 onChangeText={phone => console.log(phone)}
                 tintColor={colors.TINT}
                 onChangeText={phone => this.setState({ username: phone.toString() })}/>

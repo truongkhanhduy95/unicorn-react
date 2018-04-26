@@ -3,7 +3,15 @@ import {
   SELECT_VIDEO,
   FETCH_VIDEOS,
   LOGIN,
-  ADD_NEW_TASK, } from '../constants/Constants';
+  ADD_NEW_TASK,
+  INCREASE } from '../constants/Constants';
+
+export function increaseButtonClicked(number) {
+  return {
+    type: INCREASE,
+    payload: number
+  }
+}
 
 export function fetchVideos(term) {
   return {

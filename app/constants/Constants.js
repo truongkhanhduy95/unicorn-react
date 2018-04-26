@@ -7,3 +7,6 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const FETCHING_DATA = 'FETCHING_DATA';
 export const ADD_NEW_TASK = 'ADD_NEW_TASK';
+
+export const INCREASE = 'INCREASE';
+

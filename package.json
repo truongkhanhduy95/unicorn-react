@@ -32,6 +32,7 @@
     "redux-thunk": "^2.2.0",
     "rn-viewpager": "^1.2.9",
     "superagent": "^3.8.2",
+    "watchman": "^1.0.0",
     "youtube-api-search": "0.0.5"
   },
   "devDependencies": {
@@ -68,7 +69,8 @@
     "redux-devtools-log-monitor": "^1.4.0",
     "redux-logger": "^3.0.6",
     "style-loader": "^0.19.1",
-    "webpack": "^3.10.0",
+    "webpack": "^3.11.0",
+    "webpack-cli": "^2.0.15",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-dev-server": "^2.11.1",
     "webpack-hot-middleware": "^2.21.0"

@@ -81,19 +81,19 @@ export default class LoginScreen extends Component {
                 checkBoxColor={colors.TINT}
               />
               <TouchableOpacity>
-                <Text>Forgot password</Text>
+                <Text>Forgot password xx</Text>
               </TouchableOpacity>
             </View>
             <Button
-              style={[styles.loginButton, globalStyles.filledButton]}
+              style={[styles.loginButton]}
               rounded
               onPress={this.onPress.bind(this)}
             >
-              <Text style={globalStyles.filledButtonText}>{'Login'.toUpperCase()}</Text>
+              <Text style={globalStyles.filledButtonText}>{'Login 12'.toUpperCase()}</Text>
             </Button>
           </View>
           <View style={styles.logoContainer}>
-            <Image style={styles.logo} source={require('../../../public/images/logo_gcm.png')} />
+            <Image style={styles.logo} source={require('../../../public/images/logo_gcm1.png')} />
           </View>
         </View>
       </View>

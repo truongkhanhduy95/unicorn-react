@@ -1,4 +1,9 @@
-import { UPDATE_VIDEOS, SELECT_VIDEO, FETCH_VIDEOS, LOGIN } from '../constants/Constants';
+import { 
+  UPDATE_VIDEOS,
+  SELECT_VIDEO,
+  FETCH_VIDEOS,
+  LOGIN,
+  ADD_NEW_TASK, } from '../constants/Constants';
 
 export function fetchVideos(term) {
   return {
@@ -32,4 +37,9 @@ export function login(username, password, callback) {
       callback,
     },
   };
+}
+
+export const addNewTask = (inputTaskName)=>
+{
+  
 }

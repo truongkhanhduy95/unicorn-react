@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   loginButton: {
-    marginTop: 16,
+    marginTop: 80,
     alignSelf: 'stretch',
     justifyContent: 'center',
   },

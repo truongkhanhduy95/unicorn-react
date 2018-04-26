@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { TextField } from 'react-native-material-textfield';
 import { Button } from 'native-base';
@@ -22,6 +22,8 @@ export default class LoginScreen extends Component {
     this.state = {
       username: 'thuan.nguyen@unicorn.vn',
       password: '123456789',
+      clickCount: 0,
+      checked: false,
     };
   }
 
@@ -45,54 +47,73 @@ export default class LoginScreen extends Component {
     this.props.onLoginButtonPress(this.state.username, this.state.password);
   }
 
+  onTouch(){
+    this.setState(oldState =>
+    {
+       return {
+        username: 'clicked ' + ++oldState.clickCount,
+        clickCount : oldState.clickCount++,
+      };
+    })
+  }
+
+  onKeep(){
+    this.setState(previousState=>{
+      return {
+        checked : !previousState.checked
+      }
+    })
+  }
+
   render() {
+    let textTitle = 'Buy. Sell. Earn'
+    let textWelcome = 'Welcome back!!!'
     return (
       <View style={styles.container}>
         <Image
           style={styles.coverPhoto}
-          source={require('../../../public/images/img_login_bg.png')}
-        />
+          source={require('../../../public/images/img_login_bg.png')}/>
         <View style={styles.contentContainer}>
-          <View style={styles.textContainer}>
-            <Text style={styles.title}>Buy. Sell. Earn</Text>
-            <Text style={styles.subtitle}>Wecome back!!!</Text>
-          </View>
-          <View style={styles.inputForm}>
-            <TextField
-              label="Username"
-              value={this.state.username}
-              onChangeText={phone => console.log(phone)}
-              tintColor={colors.TINT}
-              onChangeText={phone => this.setState({ username: phone.toString() })}
-            />
-            <TextField
-              label="Password"
-              value={this.state.password}
-              onChangeText={phone => console.log(phone)}
-              tintColor={colors.TINT}
-              secureTextEntry
-              onChangeText={phone => this.setState({ password: phone.toString() })}
-            />
-            <View style={styles.subContainer}>
-              <CheckBox
-                style={{ flex: 1 }}
-                onClick={() => console.log('123')}
-                isChecked={false}
-                rightText="Keep me logged in"
-                checkBoxColor={colors.TINT}
-              />
-              <TouchableOpacity>
-                <Text>Forgot password</Text>
-              </TouchableOpacity>
+          <KeyboardAvoidingView style={{alignItems:'center',justifyContent:'center',flex: 2,backgroundColor:'transparent',}} behavior='position'>
+            <View style={styles.textContainer}>
+              <Text style={styles.title}>{textTitle}</Text>
+              <Text style={styles.subtitle}>{textWelcome}</Text>
             </View>
-            <Button
-              style={[styles.loginButton, globalStyles.filledButton]}
-              rounded
-              onPress={this.onPress.bind(this)}
-            >
-              <Text style={globalStyles.filledButtonText}>{'Login'.toUpperCase()}</Text>
-            </Button>
-          </View>
+            <View style={styles.inputForm}>
+              <TextField
+                label="Username"
+                value={this.state.username}
+                onChangeText={phone => console.log(phone)}
+                tintColor={colors.TINT}
+                onChangeText={phone => this.setState({ username: phone.toString() })}/>
+              <TextField
+                label="Password"
+                value={!this.state.checked?'uncheck':'checked'}
+                onChangeText={phone => console.log(phone)}
+                tintColor={colors.TINT}
+                onChangeText={phone => this.setState({ password: phone.toString() })}/>
+              <View style={[styles.subContainer,{backgroundColor:'transparent'}]}>
+                <CheckBox
+                  style={{ flex: 1 }}
+                  onClick={this.onKeep.bind(this)}
+                  isChecked={false} 
+                  rightText="Keep me logged in"
+                  checkBoxColor={colors.TINT}
+                />
+                <TouchableOpacity
+                  onPress={this.onTouch.bind(this)}>
+                  <Text>Forgot password</Text>
+                </TouchableOpacity>
+              </View>
+              <Button
+                style={[styles.loginButton, globalStyles.filledButton]}
+                rounded
+                onPress={this.onPress.bind(this)}>
+                <Text style={globalStyles.filledButtonText}>{'Login'.toUpperCase()}</Text>
+              </Button>
+            </View>
+            
+          </KeyboardAvoidingView>
           <View style={styles.logoContainer}>
             <Image style={styles.logo} source={require('../../../public/images/logo_gcm.png')} />
           </View>
@@ -100,8 +121,7 @@ export default class LoginScreen extends Component {
         <Spinner
           visible={this.props.isBusy}
           textContent="Loading..."
-          textStyle={{ color: '#000' }}
-        />
+          textStyle={{ color: '#000' }}/>
       </View>
     );
   }

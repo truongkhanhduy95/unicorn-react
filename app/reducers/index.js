@@ -2,11 +2,13 @@ import { combineReducers } from 'redux';
 import VideosReducer from './reducer_videos';
 import ActiveVideoReducer from './reducer_active_video';
 import FetchDataReducer from './reducer_fetch_data';
+import CounterReducer from './counter_reducer';
 
 const rootReducer = combineReducers({
   videos: VideosReducer,
   activeVideo: ActiveVideoReducer,
   isBusy: FetchDataReducer,
+  counter: CounterReducer,
 });
 
 export default rootReducer;

@@ -9,4 +9,5 @@ export const FETCHING_DATA = 'FETCHING_DATA';
 export const ADD_NEW_TASK = 'ADD_NEW_TASK';
 
 export const INCREASE = 'INCREASE';
+export const DECREASE = 'DECREASE';
 

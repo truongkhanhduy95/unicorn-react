@@ -2,9 +2,20 @@ import React, {Component} from 'react';
 import {View, StyleSheet} from 'react-native';
 import { Button } from 'react-native-elements';
 import ButtonComp from './ButtonComp';
+import Child from './Child';
+import * as actions from '../../actions';
+import {connect} from 'react-redux';
 
+class LearnRedux extends Component{
 
-export default class LearnRedux extends Component{
+    handleIncrease =()=>{
+        this.props.counterIncrease();
+    }
+
+    handleDecrease =()=>{
+        this.props.counterDecrease();
+    }
+
     render(){
         return(
             <View style={style.container}>
@@ -16,16 +27,18 @@ export default class LearnRedux extends Component{
                         title="Increase"
                         textColor="#fff"
                         bgColor="#397af8"
-                        onPress={() =>{}}/>
+                        onPress={this.handleIncrease}/>
                     <ButtonComp
                         title="Decrease"
                         bgColor="orange"
-                        onPress={() =>{}}/>
+                        onPress={this.handleDecrease}/>
                 </View>
             </View>
         );
     } 
 }
+
+export default connect(null,actions)(LearnRedux);
 
 const style = StyleSheet.create({
     container:{

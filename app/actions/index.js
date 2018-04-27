@@ -4,12 +4,20 @@ import {
   FETCH_VIDEOS,
   LOGIN,
   ADD_NEW_TASK,
-  INCREASE } from '../constants/Constants';
+  INCREASE,
+  DECREASE } from '../constants/Constants';
 
-export function increaseButtonClicked(number) {
+export function counterIncrease(number) {
   return {
     type: INCREASE,
     payload: number
+  }
+}
+
+export function counterDecrease()
+{
+  return {
+    type: DECREASE
   }
 }
 
